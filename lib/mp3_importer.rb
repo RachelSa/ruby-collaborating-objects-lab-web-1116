@@ -11,21 +11,17 @@ end
 
 def files
  files = Dir.entries(@path)
-normalized=[]
- files.each do |file| 
-  if file[-3..-1] == "mp3"
-     normalized << file
-     
-  end 
-end
+ normalized = files.select do |file| 
+   file[-3..-1] == "mp3"
+  end
 normalized
 end
 
- def import
+def import
   files.each do |filename|
     Song.new_by_filename(filename)
+
   end
 end
- 
- end
 
+ end
